@@ -20,13 +20,28 @@ main {
   margin: 0 auto;
   padding: 1rem 0;
 }
-.logout {
+.item-profile {
+  color: #4f4f4f;
+  font-family: Noto Sans;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.02625rem;
+}
+.line {
   border-top: solid #e0e0e0 1px;
   width: 90%;
   margin: 0 auto;
 }
 .logout a {
-  color: #eb5757;
+  color: var(--Red, #eb5757);
+  font-family: Noto Sans;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.02625rem;
 }
 h2 {
   color: #000;
