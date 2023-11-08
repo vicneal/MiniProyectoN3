@@ -1,5 +1,6 @@
 body {
   box-sizing: border-box;
+  max-width: 1250px;
 }
 
 .container {
@@ -7,7 +8,6 @@ body {
   flex-direction: column;
   justify-content: center;
   height: 100vh;
-  max-width: 1250px;
 }
 .login {
   border: 1px solid #bdbdbd;

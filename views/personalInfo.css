@@ -1,0 +1,100 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 100vh;
+}
+p {
+  margin: 0;
+}
+
+header {
+  width: 95%;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+main {
+  width: 90%;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+.logout {
+  border-top: solid #e0e0e0 1px;
+  width: 90%;
+  margin: 0 auto;
+}
+.logout a {
+  color: #eb5757;
+}
+h2 {
+  color: #000;
+  font-family: Noto Sans;
+  font-size: 2.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.07875rem;
+}
+h4 {
+  color: #000;
+  font-family: Noto Sans;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: -0.03938rem;
+}
+
+h3 {
+  color: #000;
+  font-family: Noto Sans;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.0525rem;
+}
+.profile-info {
+  color: #828282;
+  font-family: Noto Sans;
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.02844rem;
+}
+.btn-edit {
+  color: #828282;
+  font-family: Noto Sans;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.035rem;
+  border-radius: 0.75rem;
+}
+.profile-cabecera-datos {
+  color: #bdbdbd;
+  font-family: Noto Sans;
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.02844rem;
+}
+.profile-datos {
+  color: #333;
+  font-family: Noto Sans;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.03938rem;
+}
+
+.container-li {
+  width: 90%;
+  margin: 0 auto;
+}
