@@ -1,3 +1,19 @@
+<?php
+session_start();
+$nom_usuario = $_SESSION["username"];
+$cantidad_usuarios = $_SESSION["id"];
+
+
+if (!isset($nom_usuario)) {
+    header("Location: ../index.php");
+}
+require_once "../config/database.php";
+
+$res = $conexion->query("select * from usuarios where id='$cantidad_usuarios'");
+$data = $res->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,7 +46,7 @@
                     <img src="../assets/Facebook.svg" alt="">
                     <a class="btn  dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        Xanthe Neal
+                        <?= $nom_usuario ?>
                     </a>
 
                     <ul class="dropdown-menu mt-4" style="width: 11rem;">
@@ -42,9 +58,13 @@
                                 <span>Group
                                     Chat</span></a></li>
                         <li class="line"></li>
-                        <li class="py-3 logout"><a class="dropdown-item d-flex gap-3 " href="#"> <i
-                                    class="bi bi-box-arrow-right"></i>
-                                <span>Logout</span></a></li>
+                        <li class="py-3 logout">
+                            <form action="../scripts_php/cerrar_session.php" method="post">
+                                <button type="submit" class=" dropdown-item d-flex gap-3 ">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    Logout</button>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -68,6 +88,10 @@
                         </div>
                     </div>
                 </li>
+                <?php
+                foreach ($data as $usuario) { ?>
+
+
                 <li class="list-group-item">
                     <div class="container-li d-flex align-items-center justify-content-start my-3">
                         <div class="col-4">
@@ -82,7 +106,7 @@
                             <p class="profile-cabecera-datos">NAME</p>
                         </div>
                         <div class="col-8">
-                            <p class="profile-datos">Xanthe Neal</p>
+                            <p class="profile-datos"><?= $usuario["nombre"] ?></p>
                         </div>
                     </div>
                 </li>
@@ -92,7 +116,7 @@
                             <p class="profile-cabecera-datos">BIO</p>
                         </div>
                         <div class="col-8">
-                            <p class="profile-datos">I am a software developer and a big fan of devchallenges...</p>
+                            <p class="profile-datos"><?= $usuario["bio"] ?></p>
                         </div>
                     </div>
                 </li>
@@ -102,7 +126,7 @@
                             <p class="profile-cabecera-datos">PHONE</p>
                         </div>
                         <div class="col-8">
-                            <p class="profile-datos">908249274292</p>
+                            <p class="profile-datos"><?= $usuario["phone"] ?></p>
                         </div>
                     </div>
                 </li>
@@ -112,7 +136,7 @@
                             <p class="profile-cabecera-datos">EMAIL</p>
                         </div>
                         <div class="col-8">
-                            <p class="profile-datos">xanthe.neal@gmail.com</p>
+                            <p class="profile-datos"><?= $usuario["email"] ?></p>
                         </div>
                     </div>
                 </li>
@@ -126,6 +150,8 @@
                         </div>
                     </div>
                 </li>
+                <?php }
+                ?>
 
             </ul>
         </div>

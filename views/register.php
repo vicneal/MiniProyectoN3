@@ -21,7 +21,7 @@
 <body>
     <div class="container">
         <div class="col-4 mx-auto login">
-            <form action="views/login_db.php" method="post">
+            <form action="../scripts_php/registrar_usuario.php" method="post">
                 <div>
                     <img src="../assets/devchallenges.svg" alt="" class="container-logo">
                 </div>
@@ -35,8 +35,8 @@
                     <div class="icono-input">
                         <i class="bi bi-envelope-fill"></i>
                     </div>
-                    <input type="text" class="form-control " id="exampleFormControlInput1" placeholder="Username"
-                        name="usuario" />
+                    <input type="email" class="form-control " id="exampleFormControlInput1" placeholder="Email"
+                        name="email" />
                 </div>
                 <div class=" ">
 
@@ -47,7 +47,7 @@
                         name="contraseña" />
                 </div>
                 <div class="container-btn">
-                    <button type="submit" class="my-3 form-control btn btn-primary btn-login">Login</button>
+                    <button type="submit" class="my-3 form-control btn btn-primary btn-login">Start coding now </button>
                 </div>
                 <div class="container-text">
                     <p>or continue with these social profile</p>

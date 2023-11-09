@@ -34,13 +34,14 @@ main {
   width: 90%;
   margin: 0 auto;
 }
-.logout a {
+.logout button {
   color: var(--Red, #eb5757);
   font-family: Noto Sans;
   font-size: 0.75rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  padding-left: 1.1rem;
   letter-spacing: -0.02625rem;
 }
 h2 {

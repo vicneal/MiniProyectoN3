@@ -21,7 +21,7 @@
 <body>
     <div class="container">
         <div class="col-4 mx-auto login">
-            <form action="views/login_db.php" method="post">
+            <form action="/scripts_php/comprobar_usuario.php" method="post">
                 <div>
                     <img src="./assets/devchallenges.svg" alt="" class="container-logo">
                 </div>
@@ -33,7 +33,7 @@
                         <i class="bi bi-envelope-fill"></i>
                     </div>
                     <input type="text" class="form-control " id="exampleFormControlInput1" placeholder="Username"
-                        name="usuario" />
+                        name="email" />
                 </div>
                 <div class=" ">
 
