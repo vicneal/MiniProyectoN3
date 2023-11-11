@@ -39,8 +39,7 @@ $data = $res->fetchAll(PDO::FETCH_ASSOC);
         <nav class="navbar bg-body-tertiary ">
             <div class="container-fluid d-flex align-content-center">
                 <a class="navbar-brand" href="#">
-                    <img src="../assets/devchallenges.svg" alt="Logo" width="150"
-                        class="d-inline-block align-text-center">
+                    <img src="../assets/devchallenges.svg" alt="Logo" class="d-inline-block align-text-center logo">
                 </a>
                 <div class="dropdown">
                     <?php
@@ -67,16 +66,16 @@ $data = $res->fetchAll(PDO::FETCH_ASSOC);
 
                     </a>
 
-                    <ul class="dropdown-menu mt-4" style="width: 11rem;">
-                        <li class="py-2"><a class="dropdown-item d-flex gap-3 item-profile" href="#"><i
+                    <ul class="dropdown-menu mt-4 dropdown-list">
+                        <li class="py-2 dropdown-li"><a class="dropdown-item d-flex gap-3 item-profile" href="#"><i
                                     class="bi bi-person-circle"></i> <span>My
                                     Profile</span></a></li>
-                        <li class="py-2"><a class="dropdown-item d-flex gap-3 item-profile" href="#"> <i
+                        <li class="py-2 dropdown-li"><a class="dropdown-item d-flex gap-3 item-profile" href="#"> <i
                                     class="bi bi-people-fill"></i>
                                 <span>Group
                                     Chat</span></a></li>
                         <li class="line"></li>
-                        <li class="py-3 logout">
+                        <li class="py-3 logout dropdown-li">
                             <form action="../scripts_php/cerrar_session.php" method="post">
                                 <button type="submit" class=" dropdown-item d-flex gap-3 ">
                                     <i class="bi bi-box-arrow-right"></i>
@@ -94,7 +93,7 @@ $data = $res->fetchAll(PDO::FETCH_ASSOC);
             <h2>Personal info</h2>
             <h4>Basic info, like your name and photo</h4>
         </div>
-        <div class="card my-4" style="width: 50rem;">
+        <div class="card my-4 card-with">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item py-4">
                     <div class="container-li d-flex align-items-center justify-content-between">
@@ -119,7 +118,7 @@ $data = $res->fetchAll(PDO::FETCH_ASSOC);
                         <div class="col-4">
                             <p class="profile-cabecera-datos">PHOTO</p>
                         </div>
-                        <div class="col-8">
+                        <div class="col-8 div-avatar-img">
                             <?php
                                 if ($usuario["photo"] !== null) {
                                     $img_blog = base64_encode($usuario["photo"]); ?>

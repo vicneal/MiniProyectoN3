@@ -118,3 +118,17 @@ h3 {
   width: 90%;
   margin-top: 0.9rem;
 }
+
+@media screen and (max-width: 375px) {
+  body {
+    max-width: 375px;
+  }
+
+  .login {
+    padding: 1rem;
+    width: 100%;
+  }
+  h3 {
+    font-size: 0.9rem;
+  }
+}

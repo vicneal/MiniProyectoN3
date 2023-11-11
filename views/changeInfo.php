@@ -40,8 +40,7 @@ $data = $res->fetchAll(PDO::FETCH_ASSOC);
         <nav class="navbar bg-body-tertiary ">
             <div class="container-fluid d-flex align-content-center">
                 <a class="navbar-brand" href="/views/personaIInfo.php">
-                    <img src="../assets/devchallenges.svg" alt="Logo" width="150"
-                        class="d-inline-block align-text-center">
+                    <img src="../assets/devchallenges.svg" alt="Logo" class="d-inline-block align-text-center logo">
                 </a>
                 <div class="dropdown">
                     <?php
@@ -60,16 +59,16 @@ $data = $res->fetchAll(PDO::FETCH_ASSOC);
                         <span class="user-header"><?= $nom_usuario ?></span>
                     </a>
 
-                    <ul class="dropdown-menu mt-4" style="width: 11rem;">
-                        <li class="py-2"><a class="dropdown-item d-flex gap-3 item-profile" href="#"><i
+                    <ul class="dropdown-menu mt-4 dropdown-list">
+                        <li class="py-2 dropdown-li"><a class="dropdown-item d-flex gap-3 item-profile" href="#"><i
                                     class="bi bi-person-circle"></i> <span>My
                                     Profile</span></a></li>
-                        <li class="py-2"><a class="dropdown-item d-flex gap-3 item-profile" href="#"> <i
+                        <li class="py-2 dropdown-li"><a class="dropdown-item d-flex gap-3 item-profile" href="#"> <i
                                     class="bi bi-people-fill"></i>
                                 <span>Group
                                     Chat</span></a></li>
                         <li class="line"></li>
-                        <li class="py-3 logout">
+                        <li class="py-3 logout dropdown-li">
                             <form action="../scripts_php/cerrar_session.php" method="post">
                                 <button type="submit" class=" dropdown-item d-flex gap-3 ">
                                     <i class="bi bi-box-arrow-right"></i>
@@ -91,7 +90,7 @@ $data = $res->fetchAll(PDO::FETCH_ASSOC);
 
         <form action="/scripts_php/update_usuario.php" method="post" enctype="multipart/form-data">
 
-            <div class="card my-4 mx-auto px-5 py-4" style="width: 50rem;">
+            <div class="card my-4 mx-auto px-5 py-4 card-with">
                 <div>
                     <h4>Change Info</h4>
                     <h5>Changes will be reflected to every services</h5>
@@ -157,7 +156,6 @@ $data = $res->fetchAll(PDO::FETCH_ASSOC);
         var file = input.files[0];
 
         if (file) {
-            // Mostrar la previsualización solo si se selecciona una imagen
             var preview = document.getElementById('preview');
             var reader = new FileReader();
 
@@ -167,7 +165,7 @@ $data = $res->fetchAll(PDO::FETCH_ASSOC);
 
             reader.readAsDataURL(file);
         } else {
-            alert('Please select an image first.');
+            alert('Selecciona una imagen primero...');
         }
     }
     </script>

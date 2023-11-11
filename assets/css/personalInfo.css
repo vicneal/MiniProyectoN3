@@ -15,6 +15,9 @@ header {
   margin: 0 auto;
   padding: 1rem 0;
 }
+.logo {
+  width: 150px;
+}
 .avata-img-header {
   width: 2rem;
 }
@@ -26,6 +29,9 @@ header {
   font-weight: 700;
   line-height: normal;
   letter-spacing: -0.02625rem;
+}
+.dropdown-list {
+  width: 11rem;
 }
 main {
   width: 90%;
@@ -73,6 +79,9 @@ h4 {
   font-weight: 300;
   line-height: normal;
   letter-spacing: -0.03938rem;
+}
+.card-with {
+  width: 50rem;
 }
 
 h3 {
@@ -129,4 +138,88 @@ h3 {
 .avatar-img {
   width: 15%;
   margin: 0.2rem 0;
+}
+
+@media screen and (max-width: 375px) {
+  body {
+    max-width: 375px;
+    height: 100vh;
+  }
+  header {
+    width: 100%;
+  }
+  .logo {
+    width: 100px;
+  }
+  .avata-img-header {
+    width: 1.8rem;
+  }
+  .user-header {
+    display: none;
+  }
+  .dropdown {
+    position: relative;
+  }
+  .dropdown-list {
+    position: absolute;
+    transform: translateY(-120%);
+    transform: translateX(-55%);
+  }
+  .dropdown-li {
+    padding: 0;
+    padding: 2px !important;
+  }
+  main {
+    width: 100%;
+  }
+  .item-profile {
+    font-size: 0.7rem;
+    letter-spacing: -0.02625rem;
+  }
+  .logout button {
+    font-size: 0.7rem;
+    padding-left: 0.9rem;
+  }
+  h2 {
+    color: #000;
+    font-family: Noto Sans;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.0525rem;
+  }
+  h4 {
+    font-size: 0.875rem;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: -0.03063rem;
+  }
+  .card-with {
+    width: 100%;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.0525rem;
+  }
+  .profile-datos {
+    font-size: 0.8rem;
+    letter-spacing: -0.035rem;
+    text-align: end;
+  }
+
+  .container-li {
+    width: 100%;
+  }
+  .div-avatar-img {
+    display: flex;
+    justify-content: end;
+  }
+  .avatar-img {
+    width: 35%;
+    margin: 0.2rem 0;
+  }
 }
