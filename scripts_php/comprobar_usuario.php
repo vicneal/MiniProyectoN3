@@ -18,18 +18,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if (count($data) > 0) {
         if (password_verify($contraseña, $data[0]["pass"])) {
-            echo "USUARIO VALIDO";
-            echo "CONTRASEÑA VALIDA";
+            // echo "USUARIO VALIDO";
+            // echo "CONTRASEÑA VALIDA";
 
             $_SESSION["username"] = $data[0]["nombre"];
             $_SESSION["id"] = $data[0]["id"];
             header("Location: ../views/personaIInfo.php");
         } else {
-            echo "CONTRASEÑA INCORRECTA";
+            // echo "CONTRASEÑA INCORRECTA";
             header("Location: ../index.php");
         }
     } else {
-        echo "NO EXISTE EL USUARIO";
+        // echo "NO EXISTE EL USUARIO";
         header("Location: ../index.php");
     }
 }

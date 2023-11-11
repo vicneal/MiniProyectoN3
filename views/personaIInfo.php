@@ -1,7 +1,7 @@
 <?php
 session_start();
 $nom_usuario = $_SESSION["username"];
-$cantidad_usuarios = $_SESSION["id"];
+$id = $_SESSION["id"];
 
 
 if (!isset($nom_usuario)) {
@@ -9,7 +9,7 @@ if (!isset($nom_usuario)) {
 }
 require_once "../config/database.php";
 
-$res = $conexion->query("select * from usuarios where id='$cantidad_usuarios'");
+$res = $conexion->query("select * from usuarios where id='$id'");
 $data = $res->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
@@ -43,10 +43,28 @@ $data = $res->fetchAll(PDO::FETCH_ASSOC);
                         class="d-inline-block align-text-center">
                 </a>
                 <div class="dropdown">
-                    <img src="../assets/Facebook.svg" alt="">
+                    <?php
+                    foreach ($data as $usuario) {
+                        if ($usuario["photo"] !== null) {
+                            $img_blog = base64_encode($usuario["photo"]); ?>
+                    <img src='data:image/*;base64,<?= $img_blog ?>' alt="avatar usuario" class="avata-img-header">
+                    <?php } else { ?>
+                    <img src="/assets/User-avatar.svg.png" alt="avatar usuario" class="avata-img-header">
+                    <?php }
+                    }
+                    ?>
+
                     <a class="btn  dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <?= $nom_usuario ?>
+
+                        <?php if ($nom_usuario !== "Desconocido") { ?>
+                        <?php foreach ($data as $usuario) { ?>
+                        <span class="user-header"><?= $usuario["nombre"] ?></span>
+                        <?php } ?>
+                        <?php } else { ?>
+                        <span class="user-header"><?= $nom_usuario ?></span>
+                        <?php } ?>
+
                     </a>
 
                     <ul class="dropdown-menu mt-4" style="width: 11rem;">
@@ -71,6 +89,7 @@ $data = $res->fetchAll(PDO::FETCH_ASSOC);
         </nav>
     </header>
     <main class="d-flex flex-column align-items-center">
+
         <div class="text-center">
             <h2>Personal info</h2>
             <h4>Basic info, like your name and photo</h4>
@@ -84,7 +103,10 @@ $data = $res->fetchAll(PDO::FETCH_ASSOC);
                             <p class="profile-info">Some info may be visible to other people</p>
                         </div>
                         <div>
-                            <button class="btn btn-outline-secondary px-4 btn-edit">Edit</button>
+
+                            <a class="btn btn-outline-secondary px-4 btn-edit"
+                                href="./changeInfo.php?id=<?= $id ?>">Edit</a>
+
                         </div>
                     </div>
                 </li>
@@ -97,7 +119,18 @@ $data = $res->fetchAll(PDO::FETCH_ASSOC);
                         <div class="col-4">
                             <p class="profile-cabecera-datos">PHOTO</p>
                         </div>
-                        <div class="col-8"><img src="../assets/Google.svg" alt=""></div>
+                        <div class="col-8">
+                            <?php
+                                if ($usuario["photo"] !== null) {
+                                    $img_blog = base64_encode($usuario["photo"]); ?>
+                            <img src='data:image/*;base64,<?= $img_blog ?>' alt="avatar usuario" class="avatar-img">
+                            <?php } else { ?>
+                            <img src="/assets/User-avatar.svg.png" alt="avatar usuario" class="avatar-img">
+                            <?php }
+
+                                ?>
+
+                        </div>
                     </div>
                 </li>
                 <li class="list-group-item">

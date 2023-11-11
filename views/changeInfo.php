@@ -1,3 +1,20 @@
+<?php
+session_start();
+$nom_usuario = $_SESSION["username"];
+$id = $_GET["id"];
+
+$_SESSION["id"] = $id;
+
+if (!isset($nom_usuario)) {
+    header("Location: ../index.php");
+}
+require_once "../config/database.php";
+
+$res = $conexion->query("select * from usuarios where id='$id'");
+$data = $res->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +31,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300;400;600;700;800&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../assets/css/personalInfo.css" />
+    <link rel="stylesheet" href="../assets/css/changeInfo.css" />
     <title>Mini Proyecto Nivel 3</title>
 </head>
 
@@ -22,15 +39,25 @@
     <header>
         <nav class="navbar bg-body-tertiary ">
             <div class="container-fluid d-flex align-content-center">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/views/personaIInfo.php">
                     <img src="../assets/devchallenges.svg" alt="Logo" width="150"
                         class="d-inline-block align-text-center">
                 </a>
                 <div class="dropdown">
-                    <img src="../assets/Facebook.svg" alt="">
+                    <?php
+                    foreach ($data as $usuario) {
+                        if ($usuario["photo"] !== null) {
+                            $img_blog = base64_encode($usuario["photo"]); ?>
+                    <img src='data:image/*;base64,<?= $img_blog ?>' alt="avatar usuario" class="avata-img-header">
+                    <?php } else { ?>
+                    <img src="/assets/User-avatar.svg.png" alt="avatar usuario" class="avata-img-header">
+                    <?php }
+                    }
+                    ?>
+
                     <a class="btn  dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        Xanthe Neal
+                        <span class="user-header"><?= $nom_usuario ?></span>
                     </a>
 
                     <ul class="dropdown-menu mt-4" style="width: 11rem;">
@@ -42,94 +69,112 @@
                                 <span>Group
                                     Chat</span></a></li>
                         <li class="line"></li>
-                        <li class="py-3 logout"><a class="dropdown-item d-flex gap-3 " href="#"> <i
-                                    class="bi bi-box-arrow-right"></i>
-                                <span>Logout</span></a></li>
+                        <li class="py-3 logout">
+                            <form action="../scripts_php/cerrar_session.php" method="post">
+                                <button type="submit" class=" dropdown-item d-flex gap-3 ">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    Logout</button>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <main class="d-flex flex-column align-items-center">
-        <div class="text-center">
-            <h2>Personal info</h2>
-            <h4>Basic info, like your name and photo</h4>
-        </div>
-        <div class="card my-4" style="width: 50rem;">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item py-4">
-                    <div class="container-li d-flex align-items-center justify-content-between">
-                        <div>
-                            <h3>Profile</h3>
-                            <p class="profile-info">Some info may be visible to other people</p>
-                        </div>
-                        <div>
-                            <button class="btn btn-outline-secondary px-4 btn-edit">Edit</button>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="container-li d-flex align-items-center justify-content-start my-3">
-                        <div class="col-4">
-                            <p class="profile-cabecera-datos">PHOTO</p>
-                        </div>
-                        <div class="col-8"><img src="../assets/Google.svg" alt=""></div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="container-li d-flex align-items-center justify-content-start my-3">
-                        <div class="col-4">
-                            <p class="profile-cabecera-datos">NAME</p>
-                        </div>
-                        <div class="col-8">
-                            <p class="profile-datos">Xanthe Neal</p>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="container-li d-flex align-items-center justify-content-start my-3">
-                        <div class="col-4">
-                            <p class="profile-cabecera-datos">BIO</p>
-                        </div>
-                        <div class="col-8">
-                            <p class="profile-datos">I am a software developer and a big fan of devchallenges...</p>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="container-li d-flex align-items-center justify-content-start my-3">
-                        <div class="col-4">
-                            <p class="profile-cabecera-datos">PHONE</p>
-                        </div>
-                        <div class="col-8">
-                            <p class="profile-datos">908249274292</p>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="container-li d-flex align-items-center justify-content-start my-3">
-                        <div class="col-4">
-                            <p class="profile-cabecera-datos">EMAIL</p>
-                        </div>
-                        <div class="col-8">
-                            <p class="profile-datos">xanthe.neal@gmail.com</p>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="container-li d-flex align-items-center justify-content-start my-3">
-                        <div class="col-4">
-                            <p class="profile-cabecera-datos">PASSWORD</p>
-                        </div>
-                        <div class="col-8">
-                            <p class="profile-datos">************</p>
-                        </div>
-                    </div>
-                </li>
+    <main class="d-flex flex-column ">
+        <div class="container-btn-back">
+            <a href="./personaIInfo.php"><button type="button" class="btn btn-link">
+                    <i class="bi bi-arrow-bar-left">
 
-            </ul>
+                    </i> Back</button></a>
         </div>
+
+        <form action="/scripts_php/update_usuario.php" method="post" enctype="multipart/form-data">
+
+            <div class="card my-4 mx-auto px-5 py-4" style="width: 50rem;">
+                <div>
+                    <h4>Change Info</h4>
+                    <h5>Changes will be reflected to every services</h5>
+                </div>
+                <?php
+                foreach ($data as $usuario) { ?>
+                <div class="d-flex align-items-center">
+                    <?php
+                        if ($usuario["photo"] !== null) {
+                            $img_blog = base64_encode($usuario["photo"]); ?>
+                    <img id="preview" src='data:image/*;base64,<?= $img_blog ?>' alt="avatar usuario"
+                        class="avatar-img">
+                    <?php } else { ?>
+                    <img id="preview" src="/assets/User-avatar.svg.png" alt="avatar usuario" class="avatar-img">
+                    <?php }
+
+                        ?>
+                    <!-- <img id="preview" src="/assets/User-avatar.svg.png" alt="avatar usuario" class="avatar-img"> -->
+
+                    <label for="imagen" class="custom-file-upload">
+                        <i class="bi bi-camera-fill"></i>
+                        <input type="file" accept="image/*" name="imagen" id="imagen">
+                    </label>
+                    <button type="button" class="btn btn-light btn-file" onclick="activatePreview()">CHANGE
+                        PHOTO</button>
+
+                </div>
+                <div class="mb-3 col-6">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control " id="name" value="<?= $usuario['nombre'] ?>" name="nombre">
+                </div>
+                <div class="mb-3 col-6">
+                    <label for="bio" class="form-label">Bio</label>
+                    <textarea class="form-control" id="bio" rows="3" name="bio"> <?= $usuario['bio'] ?></textarea>
+                </div>
+                <div class="mb-3 col-6">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="text" class="form-control" id="phone" value="<?= $usuario['phone'] ?>" name="phone">
+                </div>
+                <div class="mb-3 col-6">
+                    <label for="email" class="form-label"> Email</label>
+                    <input type="email" class="form-control" id="email" value="<?= $usuario['email'] ?>" name="email">
+                </div>
+                <div class="mb-3 col-6">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="************"
+                        name="password">
+                </div>
+                <?php }
+                ?>
+                <div>
+                    <div>
+                        <button class="btn btn-primary px-4 btn-save mb-3">Save</button>
+                    </div>
+                </div>
+        </form>
     </main>
+
+
+    <script>
+    function activatePreview() {
+        var input = document.getElementById('imagen');
+        var file = input.files[0];
+
+        if (file) {
+            // Mostrar la previsualización solo si se selecciona una imagen
+            var preview = document.getElementById('preview');
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+            };
+
+            reader.readAsDataURL(file);
+        } else {
+            alert('Please select an image first.');
+        }
+    }
+    </script>
+
+
+
+
 </body>
 
 </html>
