@@ -32,7 +32,7 @@
                     <div class="icono-input">
                         <i class="bi bi-envelope-fill"></i>
                     </div>
-                    <input type="text" class="form-control " id="exampleFormControlInput1" placeholder="Username"
+                    <input type="text" class="form-control " id="exampleFormControlInput1" placeholder="Email"
                         name="email" />
                 </div>
                 <div class=" ">

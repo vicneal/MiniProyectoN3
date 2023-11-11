@@ -227,6 +227,11 @@ textarea {
   h5 {
     font-size: 0.8rem;
   }
+  .bi-camera-fill {
+    font-size: 1.5rem;
+    transform: translateX(-325%);
+    left: 0.75em;
+  }
   .btn-file {
     font-size: 0.75rem;
     cursor: pointer;
